@@ -4,7 +4,7 @@ services:
     container_name: shutter-domoticz
     image: roondar/shutter-domoticz
     volumes:
-      - '/root/docker-files/shutter-domoticz/shutter.yml:/usr/src/app/shutter.yml'
+      - '/path/to/shutter.yml:/usr/src/app/shutter.yml'
     network_mode: "host"
     restart: unless-stopped
     entrypoint: [ "python", "/usr/src/app/shutter.py" ]
