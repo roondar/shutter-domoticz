@@ -2,7 +2,7 @@ version: "3"
 services:
   shutter-domoticz:
     container_name: shutter-domoticz
-    build: .
+    image: roondar/shutter-domoticz
     volumes:
       - '/root/docker-files/shutter-domoticz/shutter.yml:/usr/src/app/shutter.yml'
     network_mode: "host"
