@@ -1,0 +1,10 @@
+version: "3"
+services:
+  shutter-domoticz:
+    container_name: shutter-domoticz
+    build: .
+    volumes:
+      - '/root/docker-files/shutter-domoticz/shutter.yml:/usr/src/app/shutter.yml'
+    network_mode: "host"
+    restart: unless-stopped
+    entrypoint: [ "python", "/usr/src/app/shutter.py" ]
