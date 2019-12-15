@@ -3,6 +3,7 @@ import paho.mqtt.client as mqtt
 import json
 import logging
 import yaml
+
 stream = open('shutter.yml', 'r')
 config = yaml.safe_load(stream)
 
@@ -12,11 +13,11 @@ mqtt_server = config['mqtt']['host']
 mqtt_port = config['mqtt']['port']
 
 for s in config['shutters']:
-  shutter_name, shutter_idx = next(iter( s.items() ))
+    shutter_name, shutter_idx = next(iter(s.items()))
 
 SHUTTER_CLOSE_STATE = config['shutter_state']['SHUTTER_CLOSE_STATE']
 SHUTTER_OPEN_STATE = config['shutter_state']['SHUTTER_OPEN_STATE']
-SHUTTER_CUSTOM_STATE =  config['shutter_state']['SHUTTER_CUSTOM_STATE']
+SHUTTER_CUSTOM_STATE = config['shutter_state']['SHUTTER_CUSTOM_STATE']
 
 sensor_name = config['tasmota']['sensor_name']
 
@@ -47,7 +48,7 @@ def on_message(client, userdata, msg):
             client.publish(publish_topic, svalue)
 
     elif shutter_name in msg.topic and sensor_name in data:
-        position = str(data[sensor_name]['position'])
+        position = str(data[sensor_name]['Position'])
         logger.info(f"My current position is {position}")
         if position == "100":
             payload = {"idx": shutter_idx, "nvalue": SHUTTER_OPEN_STATE, "svalue": position}

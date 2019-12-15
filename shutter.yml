@@ -6,6 +6,7 @@ mqtt:
 
 shutters:
   - vr_salon: 1213
+  - vr_bureau: 1254
 
 topics:
   domoticz_in: 'domoticz/in'
@@ -17,7 +18,7 @@ shutter_state:
   SHUTTER_CUSTOM_STATE: 2
 
 tasmota:
-  sensor_name: 'SHUTTER-1'
+  sensor_name: 'Shutter1'
 
 logging:
   level: INFO
